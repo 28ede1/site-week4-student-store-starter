@@ -42,8 +42,21 @@ GET /products
 Fetch list of all products
 
 route params: None
-query params; (optional, string representing category)
 body fields:  None
+
+Query Parameters: (all optional)
+  category — string. Filters products to only those whose category matches
+             exactly (e.g. ?category=Clothing).
+  sort     — string. Orders the results by the given field, ascending.
+             Allowed values: "price", "name" (e.g. ?sort=price or ?sort=name).
+
+Default behavior (no query params provided): return all products, unordered.
+
+Examples:
+  GET /products                      → all products, unordered
+  GET /products?category=Clothing    → only Clothing products
+  GET /products?sort=price           → all products, cheapest first
+  GET /products?category=Clothing&sort=name → Clothing products, sorted by name
 
 success: 
 200 OK
