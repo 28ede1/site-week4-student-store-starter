@@ -12,7 +12,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("Student Store Web App Now Runnings.")
+    res.send("Student Store Web App Now Running.")
 });
 
 app.listen(PORT, () => {

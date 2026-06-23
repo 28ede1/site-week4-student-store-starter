@@ -1,0 +1,1 @@
+#1 Made sure to explictly state that total_price should be updated based on item totals and should not be passed in as a body parameter anywhere (claude originally ignored this)
