@@ -106,7 +106,7 @@ Add a new product to the database
 route params: None
 query params; None
 body field: 
-()
+(All are required)
 {
   "name": "string",
   "description": "string",
@@ -133,7 +133,7 @@ error(s):
 
 400 (Bad Request)
 {
-    "error" : "name and price are required"
+    "error" : "Fields {missing_fields} are required"
 }
 
 400 (Bad Request)
@@ -148,12 +148,9 @@ route params: id
 query params; None
 body field:
 (not that any fields that are missing remain the same value)
+(Ex: Only update name)
 {
   "name": "string",
-  "description": "string",
-  "price": "float/decimal,
-  "image_url": "string",
-  "category": "string"
 }
 
 success: 
