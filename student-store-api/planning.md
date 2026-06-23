@@ -71,7 +71,7 @@ error(s):
 
 500 (internal server error)
 {
-    "error" : "Failed to fetch products"
+    "error" : "Internal Server Error"
 }
 ----------------------------
 GET /products/:id
@@ -237,7 +237,7 @@ error(s):
 }
 ----------------------------
 GET /orders
-Fetch a list of all orders
+Fetch a list of all orders (can get orders where email matches)
 
 route params: None
 query params; email (string, optional)
@@ -254,7 +254,7 @@ success:
       "total_price": 64.97,
       "status": "pending",
       "email": "student@example.com",
-      "items": [
+      "order_items": [
         { "order_item_id": 1, "order_id": 1, "product_id": 1, "quantity": 1, "price": 49.99 },
         { "order_item_id": 2, "order_id": 1, "product_id": 2, "quantity": 1, "price": 14.99 }
       ]
@@ -265,7 +265,7 @@ error(s):
 
 500 (internal server error)
 {
-    "error" : "Failed to fetch orders"
+    "error" : "Internal Server Error."
 }
 ----------------------------
 GET /orders/:order_id
@@ -285,7 +285,7 @@ success:
     "total_price": 64.97,
     "status": "pending",
     "email": "student@example.com",
-    "items": [
+    "order_items": [
       { "order_item_id": 1, "order_id": 1, "product_id": 1, "quantity": 1, "price": 49.99 },
       { "order_item_id": 2, "order_id": 1, "product_id": 2, "quantity": 1, "price": 14.99 }
     ]
@@ -311,7 +311,7 @@ by the server not the client)
     "customer_id" : "int",
     "status" : "string",
     "email" : "string",
-    "items" : [
+    "order_items" : [
         { "product_id" : 1, "quantity" : 1 },
         { "product_id" : 2, "quantity" : 1 }
     ]
@@ -331,7 +331,7 @@ success:
     "total_price": 64.97,
     "status": "pending",
     "email": "student@example.com",
-    "items": [
+    "order_items": [
       { "order_item_id": 1, "order_id": 1, "product_id": 1, "quantity": 1, "price": 49.99 },
       { "order_item_id": 2, "order_id": 1, "product_id": 2, "quantity": 1, "price": 14.99 }
     ]
@@ -456,28 +456,7 @@ error(s):
 {
     "error" : "Order not found"
 }
-----------------------------
-Get /order-items
-Fetch all order items 
 
-route params: None
-query params; None
-body field: None
-
-success: 
-200 OK
-{
-  "order_items": [
-    { "order_item_id": 1, "order_id": 1, "product_id": 1, "quantity": 1, "price": 49.99 },
-    { "order_item_id": 2, "order_id": 1, "product_id": 2, "quantity": 1, "price": 14.99 }
-  ]
-}
-error(s):
-
-500 (internal server error)
-{
-    "error" : "Failed to fetch order items"
-}
 ----------------------------
 POST /orders/:order_id/items
 Adds an order item to an existing order
@@ -525,6 +504,29 @@ error(s):
 404 (Not Found)
 {
     "error" : "Product not found"
+}
+
+----------------------------
+Get /order-items
+Fetch all order items 
+
+route params: None
+query params; None
+body field: None
+
+success: 
+200 OK
+{
+  "order_items": [
+    { "order_item_id": 1, "order_id": 1, "product_id": 1, "quantity": 1, "price": 49.99 },
+    { "order_item_id": 2, "order_id": 1, "product_id": 2, "quantity": 1, "price": 14.99 }
+  ]
+}
+error(s):
+
+500 (internal server error)
+{
+    "error" : "Internal Server Error."
 }
 
 #3 Transaction Workflow

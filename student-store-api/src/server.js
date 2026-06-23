@@ -15,6 +15,10 @@ app.get("/", (req, res) => {
     res.send("Student Store Web App Now Running.")
 });
 
+app.use("/products", require("./routes/productRoutes"))
+app.use("/orders", require("./routes/orderRoutes"))
+app.use("/order-items", require("./routes/orderItemRoutes" /* → routes */))
+
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
