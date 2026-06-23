@@ -21,6 +21,7 @@ status (string) — the order's fulfillment state. Allowed values:
     "cancelled" (order voided)
   Any value outside this set is rejected with 400 "status is not a valid value".
 email (string)
+OrderItem[] (list of OrderItems)
 
 
 OrderItem:
