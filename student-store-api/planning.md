@@ -9,17 +9,15 @@ image_url (string)
 category (string)
 
 Order:
+
 order_id (int) (autoincrements) (primary key)
 created_at (Datetime) (created automatically)
 customer_id (int)
 total_price (float decimal)
 status (string) — the order's fulfillment state. Allowed values:
-    "pending"   (default on creation; order placed, not yet paid/processed)
-    "paid"      (payment received)
-    "shipped"   (order has left the store)
-    "delivered" (order received by customer)
-    "cancelled" (order voided)
-  Any value outside this set is rejected with 400 "status is not a valid value".
+    "completed"   (order has completed)
+    "pending"      (order in process, default when order created)
+    "cancelled"   (order voided)
 email (string)
 OrderItem[] (list of OrderItems)
 
@@ -179,6 +177,7 @@ success:
     "category": "Clothing"
   }
 }
+
 error(s):
 
 400 (Bad Request)
@@ -229,6 +228,17 @@ error(s):
 {
     "error" : "Product not found"
 }
+
+400 (Bad Request)
+{
+    "error" : "Price must be a positive number."
+}
+
+500 (Interal Server Error)
+{
+  "error" : "Internal Server Error."
+}
+
 ----------------------------
 DELETE /products/:id
 Remove a product from the datebase
@@ -396,7 +406,7 @@ success:
     "created_at": "2026-06-22T14:30:00.000Z",
     "customer_id": 7,
     "total_price": 64.97,
-    "status": "shipped",
+    "status": "pending",
     "email": "student@example.com"
   }
 }
@@ -435,7 +445,7 @@ success:
     "created_at": "2026-06-22T14:30:00.000Z",
     "customer_id": 7,
     "total_price": 64.97,
-    "status": "shipped",
+    "status": "pending",
     "email": "student@example.com"
   }
 }
@@ -548,4 +558,12 @@ The request body is received containing customer_id, status, email, and an items
 
 Next, the system iterates through the items array. For each item, it checks whether the referenced product exists in the database. If any product is not found, the entire operation fails and no data is saved to the database. If the product exists, the item total is calculated as product.price × quantity, and this value is accumulated into the order’s total_price. An OrderItem record is then created for each item, storing the order_id (from the newly created order), product_id, quantity, and the calculated price as a snapshot at the time of purchase.
 
-Finally, once all items have been successfully processed, the total_price is updated in the Order record and the transaction is committed, returning the created Order along with its associated OrderItem as a JSON object.
+Finally, once all items have been successfully processed, the total_price is updated in the Order record and the transaction is committed, returning the created Order along with its associated OrderItems as a JSON object.
+
+## Decisions Log — Product Model
+
+- **Schema translation that went smoothly**: [e.g., "`price` as Float — Prisma's Float maps cleanly to PostgreSQL DECIMAL for currency"]
+
+- **Field decision I made during implementation that wasn't in the original spec**: [e.g., "Added `@updatedAt` to track when products were last modified — useful for the frontend cache"]
+
+- **Route behavior that needed a spec update**: [e.g., "Spec said `PUT /products/:id` returns 200 with the updated product — confirmed and tested; no spec change needed"]
