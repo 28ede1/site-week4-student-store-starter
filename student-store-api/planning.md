@@ -264,7 +264,7 @@ Fetch a list of all orders (can get orders where email matches)
 
 route params: None
 query params; email (string, optional)
-body field: None
+body field: Nonei dont 
 
 success: 
 200 OK
@@ -327,7 +327,7 @@ Add a new order to the database
 route params: None
 query params; None
 body field: 
-
+(all fields required)
 (note that total_price should be recalculated 
 by the server not the client)
 {
@@ -393,9 +393,11 @@ body field:
 (note that total_price is server-computed and cannot be set directly by the client)
 
 {
-    "customer_id" : "int",
-    "status" : "string",
-    "email" : "string"
+  "customer_id": "int",
+  "status": "string",
+  "email": "string",
+  "total_price": "number (ignored by server)",
+  "order_items": "list of orderItems"
 }
 
 success: 
@@ -407,7 +409,10 @@ success:
     "customer_id": 7,
     "total_price": 64.97,
     "status": "pending",
-    "email": "student@example.com"
+    "email": "student@example.com",
+    "order_items": {
+        .... new order item objects
+    }
   }
 }
 error(s):

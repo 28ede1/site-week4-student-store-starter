@@ -7,10 +7,12 @@ async function seed() {
   try {
     console.log('🌱 Seeding database...\n')
 
-    // Clear existing data (in order due to relations)
-    await prisma.orderItem.deleteMany()
-    await prisma.order.deleteMany()
-    await prisma.product.deleteMany()
+    // Clear existing data AND reset the auto-increment id counters back to 1.
+    // (deleteMany only removes rows; RESTART IDENTITY resets the sequences.)
+    // CASCADE handles the foreign-key relations so order matters less.
+    await prisma.$executeRawUnsafe(
+      'TRUNCATE TABLE "OrderItem", "Order", "Product" RESTART IDENTITY CASCADE'
+    )
 
     // Load JSON data
     const productsData = JSON.parse(
@@ -21,9 +23,12 @@ async function seed() {
       fs.readFileSync(path.join(__dirname, 'data/orders.json'), 'utf8')
     )
 
-    // Seed products
+    // Seed products.
+    // The DB assigns its own auto-increment ids (which keep climbing across
+    // re-seeds), so map each product's JSON id → the real id it got created with.
+    const productIdMap = new Map()
     for (const product of productsData.products) {
-      await prisma.product.create({
+      const created = await prisma.product.create({
         data: {
           name: product.name,
           description: product.description,
@@ -32,6 +37,7 @@ async function seed() {
           category: product.category,
         },
       })
+      productIdMap.set(product.id, created.id)
     }
 
     // Seed orders and items
@@ -45,7 +51,7 @@ async function seed() {
           created_at: new Date(order.created_at),
           order_items: {
             create: order.items.map((item) => ({
-              product_id: item.product_id,
+              product_id: productIdMap.get(item.product_id),
               quantity: item.quantity,
               price: item.price,
             })),
