@@ -86,6 +86,30 @@
   background: var(--amz-yellow-hover);
 }
 
+/* ---------- Orders link ---------- */
+.SubNavbar .orders-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 6px 8px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.SubNavbar .orders-link:hover {
+  border-color: #fff;
+}
+.SubNavbar .orders-link .orders-link-top {
+  color: #fff;
+  font-size: 12px;
+}
+.SubNavbar .orders-link .orders-link-bottom {
+  color: #fff;
+  font-size: 14px;
+}
+
 /* ---------- Cart button ---------- */
 .SubNavbar .cart-btn {
   display: flex;
@@ -173,9 +197,12 @@
   .SubNavbar .logo {
     order: 1;
   }
-  .SubNavbar .cart-btn {
+  .SubNavbar .orders-link {
     order: 2;
     margin-left: auto;
+  }
+  .SubNavbar .cart-btn {
+    order: 2;
   }
   .SubNavbar .search-bar {
     order: 3;

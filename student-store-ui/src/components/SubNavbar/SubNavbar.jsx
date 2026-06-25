@@ -43,6 +43,11 @@ function SubNavbar({
           </button>
         </div>
 
+        <Link to="/orders" className="orders-link">
+          <span className="orders-link-top">Returns</span>
+          <span className="orders-link-bottom bold">&amp; Orders</span>
+        </Link>
+
         <button className="cart-btn" onClick={toggleSidebar} aria-label="open cart">
           <div className="cart-icon-wrap">
             <i className="material-icons">shopping_cart</i>
