@@ -1,49 +1,75 @@
 .CheckoutSuccess {
   width: 100%;
-  padding: 1rem;
+  padding: 18px;
+  border-top: 1px solid var(--border-color);
 }
 
 .CheckoutSuccess > h3 {
-  color: white;
+  color: var(--font-dark);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
-
-.CheckoutSuccess > h3 > span {
-  margin-left: 10px;
+.CheckoutSuccess > h3 .button i {
+  color: var(--amz-orange);
 }
 .CheckoutSuccess p {
-  color: white;
+  color: var(--font-light);
+  font-size: 14px;
+  line-height: 1.5;
 }
 .CheckoutSuccess .card {
-  color: white;
   display: flex;
   flex-direction: column;
+  background: #f0fff4;
+  border: 1px solid #1a936f;
+  border-radius: 8px;
+  padding: 14px;
 }
 .CheckoutSuccess .card .card-title {
-  color: white;
-  font-weight: 20px;
-  margin-bottom: 5px;
+  color: #007600;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 .CheckoutSuccess .purchase .header {
-  color: white;
-  font-weight: 600;
-  text-align: center;
-  margin: 10px 0;
+  color: var(--font-dark);
+  font-weight: 700;
+  margin: 8px 0;
 }
 .CheckoutSuccess .purchase {
-  padding-left: 20px;
+  padding-left: 18px;
 }
 .CheckoutSuccess .purchase li {
-  color: white;
+  color: var(--font-dark);
+  font-size: 14px;
+  margin: 2px 0;
+}
+.CheckoutSuccess .card-foot {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
 }
 .CheckoutSuccess button {
-  margin: 10px;
-  padding: 12px 18px;
-  font-size: 18px;
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 14px;
   cursor: pointer;
-  background: transparent;
-  border: solid 1px white;
-  color: white;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.CheckoutSuccess button.is-success {
+  background: var(--amz-yellow);
+  border: 1px solid #fcd200;
+  color: #0f1111;
+}
+.CheckoutSuccess button.is-success:hover {
+  background: var(--amz-yellow-hover);
+}
+.CheckoutSuccess button:not(.is-success) {
+  background: #fff;
+  border: 1px solid #888c8c;
+  color: #0f1111;
 }

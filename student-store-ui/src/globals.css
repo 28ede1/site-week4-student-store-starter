@@ -1,26 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&display=swap");
 
 :root {
-  --side-padding: 40px;
-  --content-width: 1100px;
-  --dark-blue: #2c4047;
-  --bright-green: #00c385;
+  --side-padding: 16px;
+  --content-width: 1500px;
+
+  /* Amazon palette */
+  --amz-navy: #131921;      /* top header */
+  --amz-navy-2: #232f3e;    /* sub-nav / footer */
+  --amz-yellow: #febd69;    /* buttons / search */
+  --amz-yellow-hover: #f3a847;
+  --amz-orange: #ff9900;    /* accents */
+  --amz-link: #007185;      /* product links */
+  --amz-link-hover: #c7511f;
+  --amz-price-red: #b12704; /* price color */
+
+  /* legacy aliases kept so existing components still resolve */
+  --dark-blue: #232f3e;
+  --bright-green: #ff9900;
   --pure-white: #fff;
-  --grey-bg: #f7f7f7;
-  --accent-orange: #ff9017;
-  --bright-red: #fe3210;
-  --muted: #969696;
-  --font-dark: #212121;
-  --font-light: #5b5b5b;
-  --border-color: #e4e4e4;
-  --star-color-filled: #e5a800;
+  --grey-bg: #eaeded;
+  --accent-orange: #ff9900;
+  --bright-red: #b12704;
+  --muted: #565959;
+  --font-dark: #0f1111;
+  --font-light: #565959;
+  --border-color: #d5d9d9;
+  --star-color-filled: #ffa41c;
   --star-color-empty: #cbd4e6;
 }
 
 body {
   margin: 0;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Amazon Ember", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--grey-bg);

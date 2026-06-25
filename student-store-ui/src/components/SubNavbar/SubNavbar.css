@@ -1,133 +1,188 @@
 .SubNavbar {
   width: 100%;
-  max-width: 100vw;
+  position: sticky;
+  top: 0;
+  z-index: 80;
   display: flex;
   flex-direction: column;
-  padding: 0 var(--side-padding);
 }
-.SubNavbar .content {
-  max-width: var(--content-width);
-  width: 100%;
-  margin: 0 auto;
+
+/* ---------- Top black bar ---------- */
+.SubNavbar .top-bar {
+  background: var(--amz-navy);
   display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-}
-.SubNavbar .content .row {
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  margin: 20px 0;
+  gap: 12px;
+  padding: 8px var(--side-padding);
 }
-.SubNavbar .content .search-bar {
+
+.SubNavbar .logo {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  align-items: baseline;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.SubNavbar .logo:hover {
+  border-color: #fff;
+}
+.SubNavbar .logo .logo-text {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.SubNavbar .logo .logo-smile {
+  color: var(--amz-orange);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* ---------- Search bar ---------- */
+.SubNavbar .search-bar {
+  display: flex;
   flex: 1;
-  margin-right: 40px;
-  /* max-width: 500px; */
-  /* width: 100%; */
-}
-.SubNavbar .content .search-bar input {
   height: 40px;
-  padding: 0 15px;
-  border-radius: 8px 0px 0px 8px;
-  border: solid 1px #e4e4e4;
-  flex: 1;
-  font-size: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 0;
 }
-.SubNavbar .content .search-bar i {
-  height: 40px;
-  width: 40px;
-  background: var(--bright-green);
-  color: white;
-  fill: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.SubNavbar .search-bar:focus-within {
+  outline: 3px solid var(--amz-orange);
+  border-radius: 4px;
 }
-.SubNavbar .content .links {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  min-width: 400px;
-}
-
-.SubNavbar .content .help,
-.SubNavbar .content .auth a,
-.SubNavbar .content .cart a {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-weight: 500;
-}
-
-.SubNavbar .content .help i {
-  color: var(--muted);
-  margin-right: 10px;
-}
-
-.SubNavbar .content .auth a {
-  color: var(--font-dark);
-  margin: 0 5px;
-}
-
-.SubNavbar .content .cart {
-  color: var(--pure-white);
-  background: var(--bright-green);
-  width: 170px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 20px;
-}
-.SubNavbar .content .cart i,
-.SubNavbar .content .cart a {
-  color: var(--pure-white);
-  margin: 0 5px;
-}
-.SubNavbar .hamburger-menu {
-  margin-right: 40px;
-}
-.SubNavbar .hamburger-menu i {
+.SubNavbar .search-bar select {
+  background: #f3f3f3;
+  border: none;
+  border-right: 1px solid #cdcdcd;
+  padding: 0 8px;
+  font-size: 12px;
+  color: #555;
   cursor: pointer;
-  color: var(--muted);
+  outline: none;
+  max-width: 120px;
+}
+.SubNavbar .search-bar input {
+  flex: 1;
+  border: none;
+  padding: 0 12px;
+  font-size: 15px;
+  outline: none;
+  min-width: 0;
+}
+.SubNavbar .search-bar .search-btn {
+  background: var(--amz-yellow);
+  border: none;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #111;
+}
+.SubNavbar .search-bar .search-btn:hover {
+  background: var(--amz-yellow-hover);
+}
+
+/* ---------- Cart button ---------- */
+.SubNavbar .cart-btn {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 8px;
+  cursor: pointer;
+  color: #fff;
+  flex-shrink: 0;
+}
+.SubNavbar .cart-btn:hover {
+  border-color: #fff;
+}
+.SubNavbar .cart-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.SubNavbar .cart-icon-wrap i {
+  font-size: 30px;
+  color: #fff;
+}
+.SubNavbar .cart-count {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--amz-orange);
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1;
+}
+.SubNavbar .cart-label {
+  font-size: 14px;
+  padding-bottom: 2px;
+}
+.bold {
+  font-weight: 700;
+}
+
+/* ---------- Category bar ---------- */
+.SubNavbar .category-bar {
+  background: var(--amz-navy-2);
+  display: flex;
+  align-items: center;
+  padding: 0 calc(var(--side-padding) - 6px);
+  height: 39px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.SubNavbar .category-bar::-webkit-scrollbar {
+  display: none;
 }
 .SubNavbar .category-menu {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  flex: 1;
-  list-style-type: none;
-  height: 40px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-.SubNavbar .category-menu.closed {
-  opacity: 0;
-}
-.SubNavbar .category-menu.closed li button {
-  transform: scale(0.01);
-}
-.SubNavbar .category-menu li.is-active button {
-  border-bottom: solid 2px var(--bright-green);
+  list-style: none;
 }
 .SubNavbar .category-menu li button {
-  cursor: pointer;
-  transition: all 0.1s ease;
-  border: none;
   background: transparent;
-  outline: none;
-  font-weight: 500;
-  font-size: 18px;
-  padding-bottom: 10px;
-  border-bottom: solid 2px transparent;
-  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  color: #fff;
+  font-size: 14px;
+  padding: 7px 9px;
+  cursor: pointer;
+  border-radius: 2px;
+  white-space: nowrap;
 }
-.SubNavbar .category-menu li button:active {
-  transform: translateY(1px);
+.SubNavbar .category-menu li button:hover {
+  border-color: #fff;
+}
+.SubNavbar .category-menu li.is-active button {
+  border-color: var(--amz-orange);
+  font-weight: 700;
+}
+
+/* ---------- Responsive ---------- */
+@media screen and (max-width: 700px) {
+  .SubNavbar .top-bar {
+    flex-wrap: wrap;
+  }
+  .SubNavbar .logo {
+    order: 1;
+  }
+  .SubNavbar .cart-btn {
+    order: 2;
+    margin-left: auto;
+  }
+  .SubNavbar .search-bar {
+    order: 3;
+    flex-basis: 100%;
+    height: 38px;
+  }
+  .SubNavbar .search-bar select {
+    max-width: 90px;
+  }
 }

@@ -1,27 +1,32 @@
 .PaymentInfo {
-  padding: 16px;
+  padding: 18px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 8px;
 }
 .PaymentInfo > h3 {
-  color: white;
+  color: var(--font-dark);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  font-size: 16px;
+  margin-bottom: 12px;
 }
-.PaymentInfo > h3 > span {
-  margin-left: 10px;
+.PaymentInfo > h3 .button i {
+  color: var(--amz-orange);
 }
 .PaymentInfo .label {
-  color: white;
+  color: var(--font-dark);
+  font-size: 13px;
+  font-weight: 700;
 }
 .PaymentInfo .is-danger {
-  color: var(--bright-red);
+  color: var(--amz-price-red);
+  font-size: 13px;
+  margin: 6px 0;
 }
 .PaymentInfo .input-field {
   width: 100%;
-  margin: 5px 0;
-}
-.PaymentInfo .input-field .label {
-  color: white;
+  margin: 8px 0;
 }
 .PaymentInfo .input-field .control {
   width: 100%;
@@ -29,19 +34,33 @@
 }
 .PaymentInfo .input-field .control input {
   width: 100%;
-  height: 36px;
-  padding: 0 15px;
-  border-radius: 8px;
-  border: solid 1px #e4e4e4;
-  flex: 1;
-  font-size: 16px;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid #888c8c;
+  font-size: 15px;
+  outline: none;
+}
+.PaymentInfo .input-field .control input:focus {
+  border-color: var(--amz-orange);
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.25);
 }
 .PaymentInfo button {
-  margin-top: 10px;
-  padding: 12px 18px;
-  font-size: 18px;
+  margin-top: 12px;
+  width: 100%;
+  padding: 11px 18px;
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
-  background: transparent;
-  border: solid 1px white;
-  color: white;
+  background: var(--amz-yellow);
+  border: 1px solid #fcd200;
+  border-radius: 999px;
+  color: #0f1111;
+}
+.PaymentInfo button:hover {
+  background: var(--amz-yellow-hover);
+}
+.PaymentInfo button:disabled {
+  opacity: 0.6;
+  cursor: default;
 }

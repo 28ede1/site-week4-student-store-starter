@@ -6,35 +6,46 @@ import "./ProductCard.css"
 function ProductCard({ product, quantity, addToCart, removeFromCart }) {
   return (
     <div className="ProductCard">
-      <div className="media">
-        <Link to={`/${product.id}`}>
-          {product.image_url ? <img src={product.image_url} alt="product cover" /> : <img src={codepath} alt="product cover" />}
-        </Link>
-      </div>
-      <div className="product-info">
-        <div className="info">
-          <p className="product-name">{product.name}</p>
-          <p className="product-price">{formatPrice(product.price)}</p>
-        </div>
-        <div className="actions">
-          <div className="buttons">
-            <i className="material-icons" onClick={addToCart}>
-              add
-            </i>
-            <i className="material-icons" onClick={removeFromCart}>
-              remove
-            </i>
-          </div>
+      <Link to={`/${product.id}`} className="media">
+        {product.image_url ? (
+          <img src={product.image_url} alt={product.name} />
+        ) : (
+          <img src={codepath} alt={product.name} />
+        )}
+      </Link>
 
+      <div className="product-info">
+        <Link to={`/${product.id}`} className="product-name">
+          {product.name}
+        </Link>
+
+        <span className="category-tag">{product.category}</span>
+
+        <div className="price">
+          <span className="price-symbol">$</span>
+          <span className="price-whole">{formatPrice(product.price).replace("$", "")}</span>
+        </div>
+
+        <div className="actions">
           {quantity ? (
-            <span className="quantity">
-              <span className="amt">{quantity}</span>
-            </span>
-          ) : null}
+            <div className="stepper">
+              <button className="step minus" onClick={removeFromCart} aria-label="remove one">
+                <i className="material-icons">remove</i>
+              </button>
+              <span className="qty">{quantity}</span>
+              <button className="step plus" onClick={addToCart} aria-label="add one">
+                <i className="material-icons">add</i>
+              </button>
+            </div>
+          ) : (
+            <button className="add-btn" onClick={addToCart}>
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>
   )
 }
 
-export default  ProductCard;
+export default ProductCard

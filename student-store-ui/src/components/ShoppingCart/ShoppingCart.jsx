@@ -79,12 +79,6 @@ const CartItems = ({ products, cart }) => {
 
   return (
     <>
-      <h3 className="">
-        Shopping Cart{" "}
-        <span className="button">
-          <i className="material-icons md-48">add_shopping_cart</i>
-        </span>
-      </h3>
       {hasItems ? (
         <>
           <CartTable products={products} cart={cart} />

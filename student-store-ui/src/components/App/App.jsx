@@ -100,12 +100,18 @@ function App() {
           order={order}
           setOrder={setOrder}
         />
+        <div
+          className={`overlay ${sidebarOpen ? "open" : ""}`}
+          onClick={toggleSidebar}
+        />
         <main>
           <SubNavbar
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}
             searchInputValue={searchInputValue}
             handleOnSearchInputChange={handleOnSearchInputChange}
+            toggleSidebar={toggleSidebar}
+            getTotalItemsInCart={handleGetTotalCartItems}
           />
           <Routes>
             <Route
