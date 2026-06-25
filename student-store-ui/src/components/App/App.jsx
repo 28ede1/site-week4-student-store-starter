@@ -37,7 +37,32 @@ function App() {
   };
 
   const handleOnCheckout = async () => {
-  }
+    
+    setIsCheckingOut(true)
+    try {
+      const order_items = Object.keys(cart).map((id) => ({
+        product_id: Number(id),
+        quantity: cart[id],
+      }));
+
+      const response = await axios.post("http://localhost:5000/orders", {
+        customer_id: 1,              
+        email: userInfo.email,
+        order_items,
+      });
+
+      setOrder(response.data.order);
+      setCart({});
+      setError(null);
+      console.log("Order Successful!")
+    } catch (error) {
+      console.error(error);
+      setError("Checkout failed. Please try again.");
+    } finally {
+      setIsCheckingOut(false);
+    }
+  };
+  
 
   useEffect(() => {
     const fetchProducts = async () => {

@@ -62,10 +62,12 @@ const getOrderById = async (req, res) => {
 }
 const createOrder = async (req, res) => { 
     try {
-        const { customer_id, status, email, order_items } = req.body
+        let{ customer_id, status, email, order_items } = req.body
+
 
         //validation per spec (status omitted → model defaults it to "pending")
         const required = { customer_id, email, order_items }
+        status = status || "pending"
         const missing = Object.keys(required).filter((key) => required[key] === undefined)
         if (missing.length > 0) {
             return res.status(400).json({ error: `Fields {${missing.join(", ")}} are required.` })
