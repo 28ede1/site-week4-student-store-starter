@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import NotFound from "../NotFound/NotFound";
 import { formatPrice, formatDate } from "../../utils/format";
+import { API_BASE_URL } from "../../config";
 import "./OrderDetail.css";
 
 function OrderDetail({ products = [] }) {
@@ -15,7 +16,7 @@ function OrderDetail({ products = [] }) {
     const fetchOrder = async () => {
       setIsFetching(true);
       try {
-        const response = await axios.get(`http://localhost:5000/orders/${order_id}`);
+        const response = await axios.get(`${API_BASE_URL}/orders/${order_id}`);
         setOrder(response.data.order);   // note: .order — matches the API shape
         setError(null);
       } catch (err) {

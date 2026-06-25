@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import NotFound from "../NotFound/NotFound";
 import { formatPrice } from "../../utils/format";
+import { API_BASE_URL } from "../../config";
 import "./ProductDetail.css";
 
 function ProductDetail({ addToCart, removeFromCart, getQuantityOfItemInCart }) {
@@ -16,7 +17,7 @@ function ProductDetail({ addToCart, removeFromCart, getQuantityOfItemInCart }) {
     const fetchProduct = async () => {
       setIsFetching(true);
       try {
-        const response = await axios.get(`http://localhost:5000/products/${id}`);
+        const response = await axios.get(`${API_BASE_URL}/products/${id}`);
         setProduct(response.data.product);   // note: .product — matches your API shape
         setError(null);
       } catch (err) {

@@ -9,6 +9,7 @@ import Orders from "../Orders/Orders";
 import OrderDetail from "../OrderDetail/OrderDetail";
 import NotFound from "../NotFound/NotFound";
 import { removeFromCart, addToCart, getQuantityOfItemInCart, getTotalItemsInCart } from "../../utils/cart";
+import { API_BASE_URL } from "../../config";
 import "./App.css";
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
         quantity: cart[id],
       }));
 
-      const response = await axios.post("http://localhost:5000/orders", {
+      const response = await axios.post(`${API_BASE_URL}/orders`, {
         customer_id: 1,              
         email: userInfo.email,
         order_items,
@@ -70,7 +71,7 @@ function App() {
     const fetchProducts = async () => {
       setIsFetching(true);
       try {
-        const response = await axios.get("http://localhost:5000/products");
+        const response = await axios.get(`${API_BASE_URL}/products`);
         setProducts(response.data.products);   // note: .products — matches your API shape
         setError(null);
       } catch (err) {

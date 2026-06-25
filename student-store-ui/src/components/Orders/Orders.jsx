@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { formatPrice, formatDate } from "../../utils/format";
+import { API_BASE_URL } from "../../config";
 import "./Orders.css";
 
 function Orders() {
@@ -19,7 +20,7 @@ function Orders() {
       setIsFetching(true);
       try {
         // pass ?email=... when a filter is active — the API filters server-side
-        const response = await axios.get("http://localhost:5000/orders", {
+        const response = await axios.get(`${API_BASE_URL}/orders`, {
           params: activeFilter ? { email: activeFilter } : {},
         });
         setOrders(response.data.orders);   // note: .orders — matches the API shape
