@@ -7,11 +7,26 @@ import "./ProductDetail.css";
 
 function ProductDetail({ addToCart, removeFromCart, getQuantityOfItemInCart }) {
   
-  const { productId } = useParams();
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchProduct = async () => {
+      setIsFetching(true);
+      try {
+        const response = await axios.get(`http://localhost:5000/products/${id}`);
+        setProduct(response.data.product);   // note: .product — matches your API shape
+        setError(null);
+      } catch (err) {
+        setError("Failed to load product.");
+      } finally {
+        setIsFetching(false);
+      }
+    };
+    fetchProduct();
+  }, [id]);
 
   if (error) {
     return <NotFound />;
