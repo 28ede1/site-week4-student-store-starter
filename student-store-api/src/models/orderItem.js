@@ -7,7 +7,7 @@ class OrderItem {
     // GET /ordersItems
     static async findAll() {
         return prisma.orderItem.findMany()
-    }
+    } 
 
     // POST /orders/:order_id/items
 

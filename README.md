@@ -4,27 +4,27 @@
 
 Submitted by: **Emmanuel Ekpenyong**
 
-Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Student Store Deployed Site](https://site-week4-student-store-starter-frontend.onrender.com/)
 
 ### Application Features
 
 #### CORE FEATURES
 
-- [ ] **Database Creation**: Set up a Postgres database to store information about products and orders.
-  - [ ]  Use Prisma to define models for `products`, `orders`, and `order_items`.
-  - [ ]  **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of your `products`, `orders`, and `order_items` tables. 
-- [ ] **Products Model**
-  - [ ] Develop a products model to represent individual items available in the store. 
-  - [ ] This model should at minimum include the attributes:
-    - [ ] `id`
-    - [ ] `name`
-    - [ ] `description`
-    - [ ] `price` 
-    - [ ] `image_url`
-    - [ ] `category`
-  - [ ] Implement methods for CRUD operations on products.
-  - [ ] Ensure transaction handling such that when an product is deleted, any `order_items` that reference that product are also deleted. 
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of all attributes (table columns) in your Products Model.
+- [ x] **Database Creation**: Set up a Postgres database to store information about products and orders.
+  - [x ]  Use Prisma to define models for `products`, `orders`, and `order_items`.
+  - [x ]  **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of your `products`, `orders`, and `order_items` tables. 
+- [x ] **Products Model**
+  - [ x] Develop a products model to represent individual items available in the store. 
+  - [x ] This model should at minimum include the attributes:
+    - [ x] `id`
+    - [ x] `name`
+    - [ x] `description`
+    - [ x] `price` 
+    - [ x] `image_url`
+    - [ x] `category`
+  - [x ] Implement methods for CRUD operations on products.
+  - [ x] Ensure transaction handling such that when an product is deleted, any `order_items` that reference that product are also deleted. 
+  - [ x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of all attributes (table columns) in your Products Model.
 - [ ] **Orders Model**
   - [ ] Develop a model to manage orders. 
   - [ ] This model should at minimum include the attributes:
