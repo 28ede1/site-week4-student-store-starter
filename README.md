@@ -98,22 +98,22 @@ Deployed Application (optional): [Student Store Deployed Site](https://site-week
 
 ### Walkthrough Video
 
-<div style="position: relative; padding-bottom: 64.55089820359281%; height: 0;"><iframe src="https://www.loom.com/embed/ab107da5235c413fbc1fa25912acc133" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+https://www.loom.com/share/ab107da5235c413fbc1fa25912acc133 
 
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+The labs gave me a solid foundation for the core work — defining Prisma models, running migrations, and wiring up basic CRUD routes for the products, orders, and order_items tables felt familiar after practicing them. Where I felt less prepared was the relational/transaction handling: making sure that deleting a product or an order also cleaned up the related order_items took some extra reading on cascading deletes in Prisma. Connecting the backend to the existing frontend was also trickier than the labs suggested, especially getting the cart state and the order placement flow to talk to my API correctly.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
-  
-Add your response here
+
+If I had more time I would have spent more of it on the frontend polish and on input validation. On the data side, I'd add better validation and error messages on the order endpoints so the API fails gracefully instead of returning raw errors. I'd also have liked to add real user accounts so the "past orders" page filtered by a logged-in user automatically instead of relying on typing in an email, and to add loading/empty states throughout the UI so it feels more responsive.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+What went well was the end-to-end flow: adding items to the cart, placing an order, and then seeing that order show up in the database and on the past-orders page. Deploying to Render and getting the frontend to use the correct API base URL through an environment variable was a good learning moment after a couple of failed attempts with hardcoded URLs. What didn't go as smoothly was tracking down small UI bugs, like a checkout field that was mislabeled. From my peers I'd like to try writing tests for the API endpoints next time, since a few of them did that and it made debugging much faster for them.
 
 ### Open-source libraries used
 
