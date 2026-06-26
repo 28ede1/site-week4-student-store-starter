@@ -98,7 +98,8 @@ Deployed Application (optional): [Student Store Deployed Site](https://site-week
 
 ### Walkthrough Video
 
-[![Walkthrough Video](https://cdn.loom.com/sessions/thumbnails/ab107da5235c413fbc1fa25912acc133-with-play.gif)](https://www.loom.com/share/ab107da5235c413fbc1fa25912acc133)
+<div style="position: relative; padding-bottom: 64.55089820359281%; height: 0;"><iframe src="https://www.loom.com/embed/ab107da5235c413fbc1fa25912acc133" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 
 ### Reflection
 
